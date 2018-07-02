@@ -29,28 +29,71 @@
       class Card extends React.Component{
          render(){
           const cardStyle = {
-            height: 400,
-            width: 300,
+            height: 200,
+            width: 150,
             backgroundColor: "#FFF",
             padding: 0, 
             boxShadow: "0px 0px 5px #666 ",
+            display: "inline-block",
           };
-          return( <div style={cardStyle}><Square/></div>);
+          return( <div style={cardStyle}>
+              <Square colorName = {this.props.colorName} letter={this.props.letter} />
+              <Lebel colorName = {this.props.colorName} />
+              </div>);
        }}
       
 
       class Square extends React.Component{
          render(){
           const SqrStyle = {
-            height: 300,
-            width: 300,
-            backgroundColor: "#FF605F",
+            height: 150,
+            width: 150,
+            backgroundColor: this.props.colorName,
           };
-          return( <div style={SqrStyle}> </div>);
+          return( <div style={SqrStyle}> <Letter letter={this.props.letter}/> </div>);
        }}
+
+
+      class Lebel extends React.Component{
+        render(){
+          const lebelStyle = {
+            fontFamily: "monospace",
+            fontSize: 26,
+            fontColor: this.props.colorName,
+            fontWeight: "bold",
+            padding:13,
+            margin:0,
+
+          };
+          return(<div style ={lebelStyle}> {this.props.colorName} </div>);
+        }}
+      
+
+      class Letter extends React.Component{
+        render(){
+        const letterStyle ={
+          fontFamily : "monaco",
+          fontSize : 46,
+          color : "#black"
+          };
+        return(<div style={letterStyle}> {this.props.letter} </div>);
+
+      }}
       
       ReactDOM.render(
-        <div> <Card/> </div>, destination)
+        <div> 
+          <Card colorName="#FF605F" letter="M"/> 
+          <Card colorName="#FFD52E" letter="E"/>
+          <Card colorName="#49DD8E" letter="G"/>
+          <Card colorName="#AE99FF" letter="H"/> 
+          <Card colorName="#49DD8E" letter="A"/>
+          <Card colorName="#58B3FF" letter="N"/>
+        </div>, destination)
+
+
+
+      
+
 
 
     </script>
